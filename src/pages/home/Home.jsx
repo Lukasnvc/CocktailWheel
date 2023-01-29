@@ -2,17 +2,18 @@ import { CocktailContext } from "../../contexts/CocktailContext";
 import { useContext } from "react";
 import CocktailsList from "../../components/CocktailsList";
 import styled from "styled-components";
+import { SearchContext } from "../../contexts/SearchContext";
 
 const Home = () => {
-  const { cocktails, isLoading } = useContext(CocktailContext)
-
+  const { cocktails } = useContext(CocktailContext)
+  const { search } = useContext(SearchContext)
+  let list = search ? search : cocktails;
   return (
     <Grid>
-      { cocktails && cocktails.map((item) => (
+      { list && list.map((item) => (
     <CocktailsList key={item.idDrink} pic={item.strDrinkThumb} title={item.strDrink}/>
      ))} 
     </Grid>
-
   );
 }
 

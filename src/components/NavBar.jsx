@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { GiDrinkMe } from 'react-icons/gi'
-import { brownish } from "../consts/colors";
+import { brownish, darkGreen } from "../consts/colors";
 import axios from "axios";
 import { categoryPicks } from '../api/categoryPicks'
 import { useEffect, useState } from "react";
+import Search from "./Search";
 
 const NavBar = () => {
   const [alcoList, setAlcoList] = useState([])
+  const Dropdown = ({ selected, setSelected }) => {
+  }
   useEffect(() => {
     axios
       .get(categoryPicks)
@@ -15,17 +18,18 @@ const NavBar = () => {
       console.error('Categories:', error)
     })
   }, [])
-  console.log(alcoList)
   return (
     <Navbar>
       <Logo>
         <GiDrinkMe/>
       </Logo>
+      <Search/>
       <NavTabs>
         <Tab>Alcoholic</Tab>
         <Tab>Non Alcoholic</Tab>
         <Tab>
           <select name="alcohol">
+            <Option value={''}>Category</Option>
             {alcoList && alcoList.map((pick) => (
               <Option key={pick.strCategory} value={pick.strCategory}>{pick.strCategory}</Option>
             ))}
@@ -58,24 +62,23 @@ display: flex;
 `
 const Tab = styled.div`
   padding: 5px 10px;
+  cursor: pointer; 
 
-  /* select {
-  display: inline;  
+  select {
+  font-size: 1rem;
   border: 0;
   width: auto;
-  margin-left: 10px;
   outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-bottom: 2px solid $dark;
-  color: $color--primary;
-  transition: all .4s ease-in-out;
-  
+  transition: 300ms ease-in-out;
   &:hover {
-    cursor: pointer;    
+    color: ${darkGreen};
+    cursor: pointer; 
   }
-} */
-  
+}
+&:hover {
+    color: ${darkGreen};
+    transform: scale(1.1); 
+  }
 
 `
 
