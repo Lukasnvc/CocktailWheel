@@ -63,6 +63,10 @@ display: flex;
 const Tab = styled.div`
   padding: 5px 10px;
   cursor: pointer; 
+  font-weight: 600;
+  font-size: 1rem;
+  color: ${brownish};
+  text-transform: uppercase;
 
   select {
   font-size: 1rem;

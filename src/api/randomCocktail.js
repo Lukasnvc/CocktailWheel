@@ -3,4 +3,4 @@ const generateRandomLetter = () => {
   return alphabet[Math.floor(Math.random() * alphabet.length)];
 };
 
-export const randomCocktailsGet = `http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${generateRandomLetter()}`;
+export const randomCocktails = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${generateRandomLetter()}`;

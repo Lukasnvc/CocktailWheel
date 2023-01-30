@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, Children } from "react";
 import axios from "axios";
-import { randomCocktailsGet } from "../api/randomCocktail";
+import { randomCocktails } from "../api/randomCocktail";
 
 const CocktailContext = createContext();
 
@@ -11,12 +11,13 @@ const CocktailProvider = ({ children }) => {
   useEffect(() => {
     setIsloading(true);
     axios
-      .get(randomCocktailsGet)
+      .get(randomCocktails)
       .then((response) => setCocktails(response.data.drinks))
       .catch((error) => {
         console.error("Cocktails:", error);
       });
   }, []);
+
   return (
     <CocktailContext.Provider value={{ cocktails, isLoading }}>
       {children}
