@@ -1,29 +1,29 @@
 import styled from "styled-components";
-import { brownish, darkBlue, lightBlue, lightGreen } from "../consts/colors";
+import { brownish, dark, pink  } from "../consts/colors";
 import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
-import {GrFormSearch} from 'react-icons/gr'
+import {FaSearch} from 'react-icons/fa'
 
 const Search = () => {
   const {input, setInput} = useContext(SearchContext)
   return (
     <SearchContainer>
       <SearchField name="search" value={input} onChange={(e) => setInput(e.target.value)} />
-      <GrFormSearch/>
-    </SearchContainer>
-
-      
-
+      <FaSearch/>
+      </SearchContainer>
   );
 }
 
 export default Search;
 
 const SearchField = styled.input`
-  background-color: ${lightBlue};
+  background-color: ${dark};
   border: none;
-  color: ${brownish};
   font-weight: 600;
+  border-bottom: 2px solid ${pink};
+  color: ${pink};
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
   &:focus {
     outline: none;
   }
@@ -31,18 +31,18 @@ const SearchField = styled.input`
 
 const SearchContainer = styled.div`
   position: relative;
-  padding: 7px 15px;
-  background-color: ${lightBlue};
-  border-radius: 20px;
-  opacity: 70%;
   svg{
     position: absolute;
-    right: 0.3px;
-    bottom: 0px;
-    font-size: 1.5rem;
-    background-color: ${darkBlue};
+    bottom: 5px;
+    right: -5px;
+    font-size: 1rem;
+    color: ${pink};
     padding: 4.1px;
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
     }
+    &:hover {
+      svg {
+        transform: scale(1.3); 
+      }
+    
+  }
 `

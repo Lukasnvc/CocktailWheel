@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {darkBlue, lightBlue, lightGreen, darkGreen} from '../consts/colors'
+import { pink, grey, lightGrey } from '../consts/colors'
 
 const CocktailsList = ({pic, title}) => {
   return (
@@ -13,27 +13,31 @@ const CocktailsList = ({pic, title}) => {
 export default CocktailsList;
 
 const Card = styled.div`
-  background-color: ${darkBlue};
-  padding: 0px 0px;
-  border-radius: 30px;
+  background-color: ${grey};
   transition: 300ms ease-in-out;
   box-shadow: rgb(38, 57, 77) 0px 35px 45px -25px;
   cursor: pointer;
+  border-bottom-right-radius: 30px;
   img {
     width: 100%;
   }
   h3 {
-    padding: 0;
-    margin: 10px;
+    margin: 0;
+    padding-bottom: 4px;
     text-align: center;
-    color: ${lightGreen};
+    color: ${lightGrey};
+    opacity: 70%;
     text-transform: uppercase;
+    transition: 300ms ease-in-out;
   }
   &:hover {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    background-color: ${lightBlue};
+    color: ${pink};
+
     h3{
-      color: ${darkGreen};
+      color: ${pink};
+      text-shadow: 0 0 3px #fff, 0 0 7px #fff, 0 0 10px #e60073, 0 0 14px #e60073, 0 0 17px #e60073, 0 0 22px #e60073, 0 0 23px #e60073;
+    transform: scale(1.1); 
     }
   }
 `

@@ -1,19 +1,26 @@
 import { CocktailContext } from "../../contexts/CocktailContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CocktailsList from "../../components/CocktailsList";
 import styled from "styled-components";
 import { SearchContext } from "../../contexts/SearchContext";
+import WheelSpin from "../../components/WheelSpin";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { cocktails } = useContext(CocktailContext)
   const { search } = useContext(SearchContext)
-  let list = search ? search : cocktails;
+
+ let list = search !== null && search.length !== 25 ? search : cocktails
+ 
+
   return (
     <Grid>
-      { list && list.map((item) => (
-    <CocktailsList key={item.idDrink} pic={item.strDrinkThumb} title={item.strDrink}/>
+      {list && list.map((item) => (
+        <Slink to={'/recipe/'+item.idDrink} key={item.idDrink}>
+          <CocktailsList  pic={item.strDrinkThumb} title={item.strDrink} />
+          </Slink>
      ))} 
-    </Grid>
+      </Grid>
   );
 }
 
@@ -25,4 +32,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 50px;
+`
+const Slink = styled(Link)`
+  text-decoration: none;
 `
