@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getById } from "../api/getById";
 import styled from "styled-components";
 import { grey, pink, lightGrey, dark } from "../consts/colors";
+import NavBar from "../components/NavBar";
 
 
 const Recipe = () => {
@@ -20,34 +21,37 @@ const Recipe = () => {
       })
   },[]);
   return (
-    <DetailWrapper>
-    <div>
-      <h1>{details.strDrink}</h1>
-      <img src={details.strDrinkThumb} alt={details.strDrink} />
-    </div>
-    <Info>
-      <RecipeBtn className={activeTab === 'instructions' ? 'active' : ''} onClick={()=> setActiveTab('instructions')}>Instructions</RecipeBtn>
-      <RecipeBtn className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</RecipeBtn>
-        {activeTab === 'instructions' && <div>
-          <h3>{details.strAlcoholic}</h3>
-          <h3>Glass: {details.strGlass}</h3>
-        <h3>{details.strInstructions}</h3>
-      </div>}
-      {activeTab === 'ingredients' && <ul>
-          {details.strIngredient1 != null && <li>{details.strIngredient1}</li>}
-          {details.strIngredient2 != null && <li>{details.strIngredient2}</li>}
-          {details.strIngredient3 != null && <li>{details.strIngredient3}</li>}
-          {details.strIngredient4 != null && <li>{details.strIngredient4}</li>}
-          {details.strIngredient5 != null && <li>{details.strIngredient5}</li>}
-          {details.strIngredient6 != null && <li>{details.strIngredient6}</li>}
-          {details.strIngredient7 != null && <li>{details.strIngredient7}</li>}
-          {details.strIngredient8 != null && <li>{details.strIngredient8}</li>}
-          {details.strIngredient9 != null && <li>{details.strIngredient9}</li>}
-          {details.strIngredient10 != null && <li>{details.strIngredient10}</li>}
-      </ul>}
-      
-    </Info>
-  </DetailWrapper>
+    <>
+      <NavBar show="none"/>
+        <DetailWrapper>
+        <div>
+          <h1>{details.strDrink}</h1>
+          <img src={details.strDrinkThumb} alt={details.strDrink} />
+        </div>
+        <Info>
+          <RecipeBtn className={activeTab === 'instructions' ? 'active' : ''} onClick={()=> setActiveTab('instructions')}>Instructions</RecipeBtn>
+          <RecipeBtn className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</RecipeBtn>
+            {activeTab === 'instructions' && <div>
+              <h3>{details.strAlcoholic}</h3>
+              <h3>Glass: {details.strGlass}</h3>
+              <h3>{details.strInstructions}</h3>
+            </div>}
+          {activeTab === 'ingredients' && <ul>
+              {details.strIngredient1 != null && <li>{details.strIngredient1}</li>}
+              {details.strIngredient2 != null && <li>{details.strIngredient2}</li>}
+              {details.strIngredient3 != null && <li>{details.strIngredient3}</li>}
+              {details.strIngredient4 != null && <li>{details.strIngredient4}</li>}
+              {details.strIngredient5 != null && <li>{details.strIngredient5}</li>}
+              {details.strIngredient6 != null && <li>{details.strIngredient6}</li>}
+              {details.strIngredient7 != null && <li>{details.strIngredient7}</li>}
+              {details.strIngredient8 != null && <li>{details.strIngredient8}</li>}
+              {details.strIngredient9 != null && <li>{details.strIngredient9}</li>}
+              {details.strIngredient10 != null && <li>{details.strIngredient10}</li>}
+          </ul>}
+          
+        </Info>
+      </DetailWrapper>
+      </>
   );
 }
 

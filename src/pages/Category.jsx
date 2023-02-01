@@ -1,30 +1,28 @@
-import styled from "styled-components";
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { alcoNonAlco } from "../api/alcoNonAlco";
-import { SearchContext } from "../contexts/SearchContext";
-import { useContext } from "react";
+import { useState, useEffect } from 'react'
+import { useParams , Link} from "react-router-dom";
+import { byCategory} from '../api/byCategory'
 import CocktailsList from "../components/CocktailsList";
 import NavBar from "../components/NavBar";
+import styled from "styled-components";
+import { SearchContext } from "../contexts/SearchContext";
+import { useContext } from "react";
 
-
-const Selection = () => {
+const Category = () => {
   let params = useParams()
   const { search } = useContext(SearchContext)
-  
-  const [cocktails, setCocktails] = useState([]);
+ 
+  const [categoryList, setCategoryList] = useState([]);
 
-    useEffect(() => {
-      axios
-        .get(alcoNonAlco+params.type)
-        .then((response) => setCocktails(response.data.drinks))
+  useEffect(() => {
+    axios
+        .get(byCategory+params.name)
+        .then((response) => setCategoryList(response.data.drinks))
         .catch((error) => {
-          console.error("Cocktails:", error);
+          console.error("Category:", error);
         });
-    }, []);
-
-    let list = search !== null && search.length !== 25 ? search : cocktails
+  }, [])
+  let list = search !== null && search.length !== 25 ? search : categoryList
   return (
     <>
       <NavBar/>
@@ -35,11 +33,11 @@ const Selection = () => {
           </Slink>
         ))} 
       </Grid>
-      </>
+    </>
   );
 }
 
-export default Selection;
+export default Category;
 
 const Grid = styled.div`
   text-decoration: none;

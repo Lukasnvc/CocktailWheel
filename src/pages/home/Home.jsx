@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { SearchContext } from "../../contexts/SearchContext";
 import WheelSpin from "../../components/WheelSpin";
 import { Link } from "react-router-dom";
+import NavBar from "../../components/NavBar";
 
 const Home = () => {
   const { cocktails } = useContext(CocktailContext)
@@ -14,13 +15,16 @@ const Home = () => {
  
 
   return (
+    <>
+    <NavBar/>
     <Grid>
       {list && list.map((item) => (
         <Slink to={'/recipe/'+item.idDrink} key={item.idDrink}>
           <CocktailsList  pic={item.strDrinkThumb} title={item.strDrink} />
           </Slink>
-     ))} 
-      </Grid>
+      ))} 
+    </Grid>
+    </>
   );
 }
 

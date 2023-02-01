@@ -6,11 +6,11 @@ import { categoryPicks } from '../api/categoryPicks'
 import { useEffect, useState } from "react";
 import Search from "./Search";
 import { NavLink } from "react-router-dom";
+import NavDropDown from "./NavDropDown";
 
 
-const NavBar = () => {
+const NavBar = ({ show}) => {
   const [alcoList, setAlcoList] = useState([])
-
   useEffect(() => {
     axios
       .get(categoryPicks)
@@ -25,27 +25,21 @@ const NavBar = () => {
       <Logo>
         <GiDrinkMe />
         <span>Cocktail wheel</span>
-        </Logo>
+      </Logo>
+     </Slink>
+     {show !== 'none' && <Search />}
+     <NavTabs>
+      <Tab><span>Spin cocktail wheel</span></Tab>
+      <Slink to={'/Alcoholic'}>
+        <Tab name='Alcoholic'>Alcoholic</Tab>
       </Slink>
-      <Search/>
-      <NavTabs>
-        <Tab><span>Spin cocktail wheel</span></Tab>
-        <Slink to={'/Alcoholic'}>
-          <Tab name='Alcoholic'>Alcoholic</Tab>
-        </Slink>
-        <Slink to={'Non_alcoholic'}>
-          <Tab name='Non_alcoholic'>Non Alcoholic</Tab>
-          </Slink>
-        <Tab>
-          <Select name="alcohol">Select</Select>
-          <SelectTiles>
-            {alcoList && alcoList.map((pick) => (
-              <Slink to={'/'+pick.strCategory} key={pick.strCategory}>{pick.strCategory}</Slink>
-            ))}
-            </SelectTiles>
-         
-        </Tab>
-      </NavTabs>
+      <Slink to={'/Non_alcoholic'}>
+        <Tab name='Non_alcoholic'>Non Alcoholic</Tab>
+      </Slink>
+      
+        <NavDropDown array={alcoList}/>
+ 
+    </NavTabs>
     </Navbar>
   );
 }
