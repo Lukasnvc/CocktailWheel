@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { CocktailProvider } from "./contexts/CocktailContext";
 import { BrowserRouter } from "react-router-dom";
 import { SearchProvider } from "./contexts/SearchContext";
+import { SpinWheelProvider } from "./contexts/SpinWheel";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <BrowserRouter>
       <SearchProvider>
         <CocktailProvider>
-          <App />
+          <SpinWheelProvider>
+            <App />
+          </SpinWheelProvider>
         </CocktailProvider>
       </SearchProvider>
     </BrowserRouter>

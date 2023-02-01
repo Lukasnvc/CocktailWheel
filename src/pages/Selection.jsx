@@ -7,6 +7,7 @@ import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
 import CocktailsList from "../components/CocktailsList";
 import NavBar from "../components/NavBar";
+import { size } from "../consts/mediaQuerys";
 
 
 const Selection = () => {
@@ -48,6 +49,12 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 50px;
+  @media (max-width: ${size.laptop}) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: ${size.tablet}) {
+    grid-template-columns: 1fr 1fr;
+  }
 `
 const Slink = styled(Link)`
   text-decoration: none;

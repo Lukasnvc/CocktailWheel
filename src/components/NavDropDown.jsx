@@ -8,7 +8,7 @@ const NavDropDown = ({array}) => {
       <DropDownTitle>Category</DropDownTitle>
       <List>
         {array.map((item) => (
-          !item.strCategory.includes('/') && <Slink to={`/category/${item.strCategory}`}>
+          !item.strCategory.includes('/') && <Slink key={item.strCategory} to={`/category/${item.strCategory}`}>
           <li>{item.strCategory}</li>
           </Slink> 
         ))}

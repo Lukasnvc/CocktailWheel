@@ -5,6 +5,7 @@ import { getById } from "../api/getById";
 import styled from "styled-components";
 import { grey, pink, lightGrey, dark } from "../consts/colors";
 import NavBar from "../components/NavBar";
+import { size } from "../consts/mediaQuerys";
 
 
 const Recipe = () => {
@@ -24,13 +25,15 @@ const Recipe = () => {
     <>
       <NavBar show="none"/>
         <DetailWrapper>
-        <div>
+        <LeftSide>
           <h1>{details.strDrink}</h1>
           <img src={details.strDrinkThumb} alt={details.strDrink} />
-        </div>
+        </LeftSide>
         <Info>
-          <RecipeBtn className={activeTab === 'instructions' ? 'active' : ''} onClick={()=> setActiveTab('instructions')}>Instructions</RecipeBtn>
-          <RecipeBtn className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</RecipeBtn>
+          <BtnWrapper>
+            <RecipeBtn className={activeTab === 'instructions' ? 'active' : ''} onClick={()=> setActiveTab('instructions')}>Instructions</RecipeBtn>
+            <RecipeBtn className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</RecipeBtn>
+          </BtnWrapper>
             {activeTab === 'instructions' && <div>
               <h3>{details.strAlcoholic}</h3>
               <h3>Glass: {details.strGlass}</h3>
@@ -57,15 +60,19 @@ const Recipe = () => {
 
 export default Recipe;
 
-
 const DetailWrapper = styled.div`
-width: 90vw;
-margin: 0 auto;
+  width: 90vw;
+  margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 50px;
+  @media (max-width: ${size.tablet}) {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
 
   color: ${lightGrey};
   .active {
@@ -74,8 +81,12 @@ margin: 0 auto;
     border-color: ${lightGrey};
     background: ${grey};
   }
+  
+`;
+
+const LeftSide = styled.div`
   img {
-    width: fit-content;
+    width: 100%;
     box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
   }
   h1 {
@@ -90,14 +101,17 @@ margin: 0 auto;
   ul {
     margin-top: 2rem;
   }
-`;
+`
 
+const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 const RecipeBtn = styled.button`
   padding: 1rem 2rem;
   color: ${pink};
   background: ${dark};
   border: 2px solid ${pink};
-  margin-right: 2rem;
   font-weight: 600;
   cursor: pointer;
   &:hover {
@@ -106,7 +120,10 @@ const RecipeBtn = styled.button`
 `;
 
 const Info = styled.div`
-  margin-left: 5rem;
   width: 400px;
   height: 450px;
+  @media (max-width: ${size.mobile}){
+    width: 320px;
+    height: fit-content;
+  }
 `;

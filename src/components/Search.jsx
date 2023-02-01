@@ -31,6 +31,7 @@ const SearchField = styled.input`
 
 const SearchContainer = styled.div`
   position: relative;
+  margin-bottom: 5px;
   svg{
     position: absolute;
     bottom: 5px;

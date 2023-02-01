@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { pink, grey, lightGrey } from '../consts/colors'
+import { size } from '../consts/mediaQuerys';
 
 const CocktailsList = ({pic, title}) => {
   return (
@@ -22,13 +23,17 @@ const Card = styled.div`
     width: 100%;
   }
   h3 {
+    font-size: 1rem;
     margin: 0;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
     text-align: center;
     color: ${lightGrey};
     opacity: 70%;
     text-transform: uppercase;
     transition: 300ms ease-in-out;
+    @media (max-width: ${size.mobile}){
+      font-size: 0.8rem;
+    }
   }
   &:hover {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;

@@ -3,14 +3,17 @@ import { GiDrinkMe } from 'react-icons/gi'
 import { dark, pink } from "../consts/colors";
 import axios from "axios";
 import { categoryPicks } from '../api/categoryPicks'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Search from "./Search";
 import { NavLink } from "react-router-dom";
 import NavDropDown from "./NavDropDown";
+import { size } from "../consts/mediaQuerys";
+import { SpinContext } from "../contexts/SpinWheel";
 
 
 const NavBar = ({ show}) => {
   const [alcoList, setAlcoList] = useState([])
+  const {spinWheel, toggleSpin} = useContext(SpinContext)
   useEffect(() => {
     axios
       .get(categoryPicks)
@@ -29,7 +32,7 @@ const NavBar = ({ show}) => {
      </Slink>
      {show !== 'none' && <Search />}
      <NavTabs>
-      <Tab><span>Spin cocktail wheel</span></Tab>
+      <Tab onClick={toggleSpin}><span>Spin cocktail wheel</span></Tab>
       <Slink to={'/Alcoholic'}>
         <Tab name='Alcoholic'>Alcoholic</Tab>
       </Slink>
@@ -56,12 +59,13 @@ const Navbar = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  flex-direction: column;
 `
 
 const Logo = styled.div`
   font-size: 3rem;
   padding-top: 5px;
-  margin-left: 20px;
+  margin-bottom: 5px;
   color: ${pink};
   cursor: pointer;
   span{
@@ -76,6 +80,10 @@ const Logo = styled.div`
 
 const NavTabs = styled.div`
 display: flex;
+@media (max-width: ${size.mobile}) {
+    flex-direction: column;
+  }
+
 `
 const Tab = styled.div`
   transition: 300ms ease-in-out;
@@ -86,42 +94,12 @@ const Tab = styled.div`
   font-size: 0.8rem;
   color: ${pink};
   text-transform: uppercase;
-
-  select {
-    color: ${pink};
-    font-family: 'Orbitron', sans-serif;
-    background-color: ${dark};
-  font-size: 1rem;
-  border: 0;
-  width: auto;
-  outline: none;
-  transition: 300ms ease-in-out;
-  &:hover {
-    transform: scale(1.1); 
-    cursor: pointer; 
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.7rem;
   }
-}
 &:hover {
   text-shadow: 0 0 3px #fff, 0 0 7px #fff, 0 0 10px #e60073, 0 0 14px #e60073, 0 0 17px #e60073, 0 0 22px #e60073, 0 0 23px #e60073;
     transform: scale(1.1); 
   }
 
-`
-
-const Option = styled.option`
-  border: 0;
-    border-bottom: 1px solid blue;
-    padding: 10px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    color: red;
-`
-
-const SelectTiles  = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-`
-const Select = styled.div`
-  position: relative;
 `
