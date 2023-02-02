@@ -1,16 +1,27 @@
-import { CocktailContext } from "../../contexts/CocktailContext";
-import { useContext } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import CocktailsList from "../../components/CocktailsList";
 import styled from "styled-components";
 import { SearchContext } from "../../contexts/SearchContext";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { size } from "../../consts/mediaQuerys";
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
+import axios from "axios";
+import { randomCocktails } from "../../api/randomCocktail";
+
 
 const Home = () => {
-  const { cocktails } = useContext(CocktailContext)
+  const [cocktails, setCocktails] = useState([]);
   const { search } = useContext(SearchContext)
+  useEffect(() => {
+    axios
+      .get(randomCocktails)
+      .then((response) => setCocktails(response.data.drinks))
+      .catch((error) => {
+        console.error("Cocktails:", error);
+      });
+  }, []);
 
  let list = search !== null && search.length !== 25 ? search : cocktails
  
@@ -24,7 +35,7 @@ const Home = () => {
     >
     <NavBar/>
     <Grid>
-      {search.map((item) => (
+      {list && list.map((item) => (
         <Slink to={'/recipe/'+item.idDrink} key={item.idDrink}>
           <CocktailsList  pic={item.strDrinkThumb} title={item.strDrink} />
         </Slink>

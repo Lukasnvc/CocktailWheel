@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { CocktailProvider } from "./contexts/CocktailContext";
 import { BrowserRouter } from "react-router-dom";
 import { SearchProvider } from "./contexts/SearchContext";
 import { SpinWheelProvider } from "./contexts/SpinWheel";
@@ -13,11 +12,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <SearchProvider>
-        <CocktailProvider>
-          <SpinWheelProvider>
-            <App />
-          </SpinWheelProvider>
-        </CocktailProvider>
+        <SpinWheelProvider>
+          <App />
+        </SpinWheelProvider>
       </SearchProvider>
     </BrowserRouter>
   </React.StrictMode>
