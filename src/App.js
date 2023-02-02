@@ -15,7 +15,7 @@ function App() {
     <AnimatePresence mode="wait">
       <Modal key={Date.now() + "modal"} />
       <Routes location={location} key={location.pathname + Date.now()}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/:type" element={<Selection />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/category/:name" element={<Category />} />
