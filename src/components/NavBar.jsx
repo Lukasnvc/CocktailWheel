@@ -24,7 +24,7 @@ const NavBar = ({ show}) => {
   }, [])
   return (
     <Navbar>
-     <Slink to={'/home'}>
+     <Slink to={'/The_cocktail-'}>
       <Logo>
         <GiDrinkMe />
         <span>Cocktail wheel</span>
