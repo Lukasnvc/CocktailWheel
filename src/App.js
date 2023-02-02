@@ -1,5 +1,4 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Selection from "./pages/Selection";
@@ -15,7 +14,7 @@ function App() {
     <AnimatePresence mode="wait">
       <Modal key={Date.now() + "modal"} />
       <Routes location={location} key={location.pathname + Date.now()}>
-        <Route path="/The_cocktail-" element={<Home />} />
+        <Route path="/CocktailWheel" element={<Home />} />
         <Route path="/:type" element={<Selection />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/category/:name" element={<Category />} />
