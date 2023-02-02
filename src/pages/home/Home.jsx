@@ -24,7 +24,7 @@ const Home = () => {
     >
     <NavBar/>
     <Grid>
-      {list && list.map((item) => (
+      {search.map((item) => (
         <Slink to={'/recipe/'+item.idDrink} key={item.idDrink}>
           <CocktailsList  pic={item.strDrinkThumb} title={item.strDrink} />
         </Slink>
