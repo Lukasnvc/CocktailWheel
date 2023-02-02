@@ -8,6 +8,7 @@ import { useContext } from "react";
 import CocktailsList from "../components/CocktailsList";
 import NavBar from "../components/NavBar";
 import { size } from "../consts/mediaQuerys";
+import {motion} from 'framer-motion'
 
 
 const Selection = () => {
@@ -27,7 +28,12 @@ const Selection = () => {
 
     let list = search !== null && search.length !== 25 ? search : cocktails
   return (
-    <>
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar/>
       <Grid>
         {list && list.map((item) => (
@@ -36,7 +42,7 @@ const Selection = () => {
           </Slink>
         ))} 
       </Grid>
-      </>
+      </motion.div>
   );
 }
 

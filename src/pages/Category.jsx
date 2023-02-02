@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
 import { size } from "../consts/mediaQuerys";
+import {motion} from 'framer-motion'
 
 const Category = () => {
   let params = useParams()
@@ -25,7 +26,12 @@ const Category = () => {
   }, [])
   let list = search !== null && search.length !== 25 ? search : categoryList
   return (
-    <>
+    <motion.div
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    >
       <NavBar/>
       <Grid>
         {list && list.map((item) => (
@@ -34,7 +40,7 @@ const Category = () => {
           </Slink>
         ))} 
       </Grid>
-    </>
+    </motion.div>
   );
 }
 

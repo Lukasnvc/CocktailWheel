@@ -1,12 +1,12 @@
 import { CocktailContext } from "../../contexts/CocktailContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CocktailsList from "../../components/CocktailsList";
 import styled from "styled-components";
 import { SearchContext } from "../../contexts/SearchContext";
-import WheelSpin from "../../components/WheelSpin";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { size } from "../../consts/mediaQuerys";
+import {motion} from 'framer-motion'
 
 const Home = () => {
   const { cocktails } = useContext(CocktailContext)
@@ -16,16 +16,21 @@ const Home = () => {
  
 
   return (
-    <>
+    <motion.div
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    >
     <NavBar/>
     <Grid>
       {list && list.map((item) => (
         <Slink to={'/recipe/'+item.idDrink} key={item.idDrink}>
           <CocktailsList  pic={item.strDrinkThumb} title={item.strDrink} />
-          </Slink>
+        </Slink>
       ))} 
     </Grid>
-    </>
+    </motion.div>
   );
 }
 

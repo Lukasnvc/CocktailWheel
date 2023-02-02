@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { GiDrinkMe } from 'react-icons/gi'
-import { dark, pink } from "../consts/colors";
+import { pink } from "../consts/colors";
 import axios from "axios";
 import { categoryPicks } from '../api/categoryPicks'
 import { useEffect, useState, useContext } from "react";

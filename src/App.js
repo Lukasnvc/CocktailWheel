@@ -7,21 +7,21 @@ import Recipe from "./pages/Recipe";
 import Category from "./pages/Category";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const location = useLocation();
   return (
-    <>
-      <Modal />
-      <Routes location={location} key={location.pathname}>
+    <AnimatePresence mode="wait">
+      <Modal key={Date.now() + "modal"} />
+      <Routes location={location} key={location.pathname + Date.now()}>
         <Route path="/" element={<Home />} />
         <Route path="/:type" element={<Selection />} />
         <Route path="/recipe/:id" element={<Recipe />} />
         <Route path="/category/:name" element={<Category />} />
       </Routes>
-
-      <Footer />
-    </>
+      <Footer key={Date.now() + "footer"} />
+    </AnimatePresence>
   );
 }
 

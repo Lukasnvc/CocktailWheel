@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { grey, pink, lightGrey, dark } from "../consts/colors";
 import NavBar from "../components/NavBar";
 import { size } from "../consts/mediaQuerys";
+import {motion} from 'framer-motion'
 
 
 const Recipe = () => {
@@ -22,7 +23,12 @@ const Recipe = () => {
       })
   },[]);
   return (
-    <>
+    <motion.div
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    >
       <NavBar show="none"/>
         <DetailWrapper>
         <LeftSide>
@@ -54,7 +60,7 @@ const Recipe = () => {
           
         </Info>
       </DetailWrapper>
-      </>
+      </motion.div>
   );
 }
 

@@ -5,25 +5,29 @@ import { Link} from "react-router-dom";
 import axios from "axios";
 import {randomPick} from '../api/spinWheel';
 import SpinLady from '../consts/pictures/wheel-spin.png';
-import { pink, dark, lightGrey, grey } from '../consts/colors'
-import {size} from '../consts/mediaQuerys'
+import { pink, dark, grey } from '../consts/colors'
+import { size } from '../consts/mediaQuerys'
+import { motion } from 'framer-motion'
 
 const Modal = () => {
   const { spinWheel, toggleSpin } = useContext(SpinContext);
-  const [cocktail, setCocktail] = useState([])
-
+  const [cocktail, setCocktail] = useState([]);
   useEffect(() => {
     axios
-    .get(randomPick)
-    .then((response) => setCocktail(response.data.drinks))
-    .catch((error) => {
-      console.error("Wheel:", error);
-    })
-  },[spinWheel])
-  
+      .get(randomPick)
+      .then((response) => setCocktail(response.data.drinks))
+      .catch((error) => {
+        console.error("Wheel:", error);
+      });
+  }, [spinWheel]);
   if(!spinWheel) return null
   return (
-    <Overlay onClick={toggleSpin}>
+    <Overlay onClick={toggleSpin}
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    >
       <ModalContiner onClick={(e) => {
         e.stopPropagation()
       }}>
@@ -38,7 +42,6 @@ const Modal = () => {
           <h2>Cocktail Wheel</h2>
           <img src={SpinLady} alt="" />
         </ModalRight>
-
       </ModalContiner>
     </Overlay>
   );
@@ -65,7 +68,7 @@ const Slink = styled(Link)`
   text-decoration: none;
 `
 
-const Overlay = styled.div`
+const Overlay = styled(motion.div)`
   background-color: rgba(0,0,0,0.5);
   position: fixed;
   width: 100%;

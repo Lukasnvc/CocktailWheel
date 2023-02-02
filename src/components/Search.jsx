@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { brownish, dark, pink  } from "../consts/colors";
+import { dark, pink  } from "../consts/colors";
 import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
 import {FaSearch} from 'react-icons/fa'
@@ -10,7 +10,7 @@ const Search = () => {
     <SearchContainer>
       <SearchField name="search" value={input} onChange={(e) => setInput(e.target.value)} />
       <FaSearch/>
-      </SearchContainer>
+    </SearchContainer>
   );
 }
 
@@ -26,6 +26,7 @@ const SearchField = styled.input`
   text-transform: uppercase;
   &:focus {
     outline: none;
+    background-color: ${dark};
   }
 `
 

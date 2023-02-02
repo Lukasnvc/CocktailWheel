@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { lightGrey, pink, dark } from "../consts/colors";
+import { pink } from "../consts/colors";
 import { NavLink } from "react-router-dom";
 
 const NavDropDown = ({array}) => {
