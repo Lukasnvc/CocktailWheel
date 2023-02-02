@@ -46,16 +46,16 @@ const Recipe = () => {
               <h3>{details.strInstructions}</h3>
             </div>}
           {activeTab === 'ingredients' && <ul>
-              {details.strIngredient1 != null && <li>{details.strIngredient1}</li>}
-              {details.strIngredient2 != null && <li>{details.strIngredient2}</li>}
-              {details.strIngredient3 != null && <li>{details.strIngredient3}</li>}
-              {details.strIngredient4 != null && <li>{details.strIngredient4}</li>}
-              {details.strIngredient5 != null && <li>{details.strIngredient5}</li>}
-              {details.strIngredient6 != null && <li>{details.strIngredient6}</li>}
-              {details.strIngredient7 != null && <li>{details.strIngredient7}</li>}
-              {details.strIngredient8 != null && <li>{details.strIngredient8}</li>}
-              {details.strIngredient9 != null && <li>{details.strIngredient9}</li>}
-              {details.strIngredient10 != null && <li>{details.strIngredient10}</li>}
+            {details.strIngredient1 != null && <li>{details.strMeasure1} - {details.strIngredient1}</li>}
+              {details.strIngredient2 != null && <li>{details.strMeasure2} - {details.strIngredient2}</li>}
+              {details.strIngredient3 != null && <li>{details.strMeasure3} - {details.strIngredient3}</li>}
+              {details.strIngredient4 != null && <li>{details.strMeasure4} - {details.strIngredient4}</li>}
+              {details.strIngredient5 != null && <li>{details.strMeasure5} - {details.strIngredient5}</li>}
+              {details.strIngredient6 != null && <li>{details.strMeasure6} - {details.strIngredient6}</li>}
+              {details.strIngredient7 != null && <li>{details.strMeasure7} - {details.strIngredient7}</li>}
+              {details.strIngredient8 != null && <li>{details.strMeasure8} - {details.strIngredient8}</li>}
+              {details.strIngredient9 != null && <li>{details.strMeasure9} - {details.strIngredient9}</li>}
+              {details.strIngredient10 != null && <li>{details.strMeasure10} - {details.strIngredient10}</li>}
           </ul>}
           
         </Info>
