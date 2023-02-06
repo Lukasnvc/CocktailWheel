@@ -13,7 +13,7 @@ import { SpinContext } from "../contexts/SpinWheel";
 
 const NavBar = ({ show}) => {
   const [alcoList, setAlcoList] = useState([])
-  const {spinWheel, toggleSpin} = useContext(SpinContext)
+  const { toggleSpin} = useContext(SpinContext)
   useEffect(() => {
     axios
       .get(categoryPicks)

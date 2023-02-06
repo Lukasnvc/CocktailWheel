@@ -69,8 +69,9 @@ export default Recipe;
 const DetailWrapper = styled.div`
   width: 90vw;
   margin: 0 auto;
+  margin-bottom: 30%;
   margin-top: 5rem;
-  margin-bottom: 5rem;
+
   display: flex;
   justify-content: center;
   align-items: center;

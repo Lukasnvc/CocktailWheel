@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { pink, grey, lightGrey } from '../consts/colors'
+import { pink, grey } from '../consts/colors'
 import { size } from '../consts/mediaQuerys';
 
 const CocktailsList = ({pic, title}) => {

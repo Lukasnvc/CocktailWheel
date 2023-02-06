@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, Children } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { searchName } from "../api/searchName";
 
